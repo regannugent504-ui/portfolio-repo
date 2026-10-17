@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/styles.css">
+    <title>Reading Tracker</title>
+</head>
+<body>
+
+    <header>
+        <h1>Go Off Nerd!!</h1>
+        <p>Organize your books and track your reading progress like Goodreads but don't be afraid to share your unfiltered, brutally honest thoughts.</p>
+    
+    </header>
+
+    <main>
+        <section>
+            <h2>My Reading Overview</h2>
+
+            <p>Total Books: <span id="total-books">0</span></p>
+            <p>Books Finished: <span id="finished-books">0</span></p>
+            <p>Pages Read: <span id="pages-read">0</span></p>
+        </section>
+    <button id="exportBtn" type="button">
+        Export Reading Tracker
+    </button>
+
+    
+        <section>
+            <h2>Add a Book</h2>
+
+            <form id="book-form">
+                <label for="title">Book Title:</label>
+                <input type="text" id="title" name="title" required>
+
+                <br><br>
+
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+
+                <br><br>
+
+                <label for="totalPages">Total Pages:</label>
+                <input type="number" id="totalPages" name="totalPages"
+                       min="1" step="1" required>
+
+                <br><br>
+
+                <label for="pagesRead">Pages Read:</label>
+                <input type="number" id="pagesRead" name="pagesRead"
+                       min="0" step="1" value="0">
+
+                <br><br>
+
+                <label for="status">Reading Status:</label>
+                <select id="status" name="status">
+                    <option value="Want to read">Want to Read</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Finished">Finished</option>
+                </select>
+
+                <br><br>
+
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating">
+                    <option value="0">Not Rated</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+
+                <br><br>
+
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes"></textarea>
+
+                <br><br>
+
+                <button type="submit">Add Book</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>My Books</h2>
+
+            <label for="search">Search by title or author:</label>
+            <input type="search" id="search">
+
+            <br><br>
+
+            <label for="status-filter">Filter by status:</label>
+            <select id="status-filter">
+                <option value="All">All Books</option>
+                <option value="Want to read">Want to Read</option>
+                <option value="Reading">Reading</option>
+                <option value="Finished">Finished</option>
+            </select>
+
+            <div id="book-list">
+                <p>Your reading list will appear here.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Your reading list is saved in your browser.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
