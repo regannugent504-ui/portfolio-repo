@@ -1,0 +1,171 @@
+
+/* General page layout */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-color: #f5f3ef;
+    color: #292d32;
+}
+
+/* Header */
+header {
+    background-color: #314c42;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Main content */
+main {
+    max-width: 900px;
+    width: 90%;
+    margin: 30px auto;
+}
+
+section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    color: #314c42;
+    margin-top: 0;
+}
+
+/* Forms */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b8c1bb;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+    outline: 3px solid #d59b37;
+    outline-offset: 2px;
+}
+
+/* Buttons */
+button {
+    background-color: #314c42;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 5px 5px 5px 0;
+}
+
+button:hover {
+    background-color: #243a32;
+}
+
+/* Reading statistics */
+#total-books,
+#finished-books,
+#pages-read {
+    font-weight: bold;
+    color: #314c42;
+    font-size: 1.2rem;
+}
+
+/* Book cards */
+.book-card {
+    background-color: #ffffff;
+    border: 1px solid #dce2dd;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 15px;
+    overflow-wrap: anywhere;
+}
+
+.book-card h3 {
+    color: #314c42;
+    margin-top: 0;
+}
+
+.book-card p {
+    margin: 8px 0;
+}
+
+/* Reading progress bars */
+progress {
+    width: 100%;
+    height: 18px;
+    accent-color: #48735c;
+}
+
+/* Delete button */
+.delete-button {
+    background-color: #a33232;
+}
+
+.delete-button:hover {
+    background-color: #812424;
+}
+
+/* Search and filter controls */
+#search,
+#status-filter {
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #555555;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 600px) {
+    main {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
