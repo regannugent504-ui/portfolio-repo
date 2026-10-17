@@ -1,0 +1,117 @@
+:root {
+  --ink: #1d1a2b;
+  --muted: #4b4760;
+  --bg: #fbfaff;
+  --panel: #efeaf8;
+  --purple: #4d1979;
+  --purple-dark: #36105a;
+  --rule: #d6cde6;
+  --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a { color: var(--purple); text-underline-offset: 3px; }
+a:hover { color: var(--purple-dark); }
+a:focus-visible, .button:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem;
+  background: var(--purple); color: #fff; padding: .5rem 1rem; z-index: 20;
+}
+.skip:focus { top: 1rem; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.site-header nav {
+  max-width: 62rem; margin: 0 auto; padding: .75rem 1.25rem;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem;
+}
+.brand { font-family: var(--serif); font-weight: 700; font-size: 1.2rem; color: var(--ink); text-decoration: none; }
+.site-header ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.site-header ul a { color: var(--ink); text-decoration: none; padding: .25rem 0; }
+.site-header ul a:hover { text-decoration: underline; text-decoration-color: var(--purple); text-underline-offset: 6px; }
+
+/* Layout */
+main { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--rule); }
+.hero { border-top: 0; padding: 4.5rem 0 3.5rem; }
+
+h1, h2, h3 { font-family: var(--serif); line-height: 1.2; margin: 0 0 1rem; }
+h1 { font-size: clamp(2.1rem, 5.5vw, 3.6rem); max-width: 20ch; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.1rem); }
+h3 { font-size: 1.25rem; margin-bottom: .5rem; }
+
+.lede { font-size: 1.2rem; color: var(--muted); max-width: 40rem; margin: 0 0 1.75rem; }
+.section-intro { color: var(--muted); max-width: 40rem; margin: 0 0 2rem; }
+.prose { max-width: 40rem; }
+.prose p { margin: 0 0 1rem; }
+
+.button {
+  display: inline-block; background: var(--purple); color: #fff;
+  padding: .75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 600;
+}
+.button:hover { background: var(--purple-dark); color: #fff; }
+
+/* Projects: ordered list, a vertical line shows the progression */
+.projects { list-style: none; margin: 0; padding: 0; counter-reset: p; }
+.projects li {
+  position: relative; counter-increment: p;
+  padding: 0 0 2.25rem 3.25rem;
+  border-left: 2px solid var(--rule); margin-left: 1rem;
+}
+.projects li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.projects li::before {
+  content: counter(p);
+  position: absolute; left: -1rem; top: 0;
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--purple); color: #fff; font-weight: 700;
+  display: grid; place-items: center;
+}
+.projects p { margin: 0 0 .5rem; max-width: 40rem; }
+.projects h3 a { color: var(--ink); }
+.projects h3 a:hover { color: var(--purple); }
+.tech { color: var(--muted); font-size: .95rem; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin: 0; }
+.skills div { background: var(--panel); padding: 1rem 1.25rem; border-radius: 6px; }
+.skills dt { font-weight: 700; margin-bottom: .25rem; }
+.skills dd { margin: 0; color: var(--muted); font-size: .98rem; }
+
+/* Contact */
+.contact { list-style: none; margin: 0; padding: 0; }
+.contact li { margin-bottom: .5rem; }
+
+footer { border-top: 1px solid var(--rule); margin-top: 1rem; padding: 1.5rem 1.25rem; text-align: center; color: var(--muted); font-size: .95rem; }
+footer p { margin: 0; }
+
+@media (max-width: 40rem) {
+  section { padding: 2.5rem 0; }
+  .hero { padding: 3rem 0 2.5rem; }
+  .projects li { padding-left: 2.5rem; }
+}
