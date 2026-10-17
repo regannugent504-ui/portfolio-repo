@@ -1,0 +1,275 @@
+/* ==========================
+   1. RESET
+   ========================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================
+   2. DESIGN TOKENS
+   ========================== */
+:root {
+    /* Color */
+    --color-accent: #4d1979;
+    --color-accent-strong: #321052;
+    --color-text: #172033;
+    --color-muted: #657186;
+    --color-bg: #f7f8fb;
+    --color-surface: #ffffff;
+    --color-danger: #b42318;
+    --color-on-header: #f7f8fb;
+
+    /* Spacing — a modular scale */
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+
+    /* Typography */
+    --text-base: 1rem;
+    --text-h3: 1.25rem;
+    --text-h2: 1.5rem;
+    --text-h1: 3.5rem;
+    --leading-body: 1.6;
+    --leading-heading: 1.2;
+
+    /* Layout */
+    --page-width: 64rem;
+    --reading-width: 70ch;
+
+    /* Lab06 */
+    --font-display: "Georgia", "Times New Roman", serif;
+    --font-body: "Helvetica Neue", Arial, sans-serif;
+    --color-surface-alt: #4d1979;
+    --radius-md: 8px;
+
+    /* Lab07 */
+    --color-border: #e5e7eb;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ==========================
+   3. BASE ELEMENT STYLES
+   ========================== */
+body {
+    font-family: var(--font-body); /* Lab06 */
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+}
+
+h1 { font-size: var(--text-h1); line-height: var(--leading-heading); }
+h2 { font-size: var(--text-h2); line-height: var(--leading-heading); }
+h3 { font-size: var(--text-h3); line-height: var(--leading-heading); }
+
+h1, h2, h3 { margin-bottom: var(--space-sm); }
+p { margin-bottom: var(--space-md); }
+p:last-child { margin-bottom: 0; }
+
+
+body.theme-dark {
+    --color-bg: #141a26;
+    --color-surface: #1f2937;
+    --color-surface-alt: #273142;
+    --color-text: #f7fafc;
+    --color-muted: #a9b4c4;
+    --color-border: #2c3648;
+    --color-accent: #c9a9f0;
+    --color-accent-strong: #e2d1f7;
+    --color-danger: #f97066;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.3);
+    --color-on-header: #f7f8fb;
+}
+
+/* ==========================
+   4. LAYOUT
+   ========================== */
+
+body {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+}
+    /* Lab06 */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background-color: var(--color-surface-alt);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+header h1 { color: var(--color-on-header); }
+
+header button:focus-visible {
+    outline-color: var(--color-on-header);
+}
+
+@media (max-width: 640px) {
+  header { padding-top: 2rem; }
+  h1 { font-size: 2rem; }
+}
+
+/* FORMS */
+label {
+    display: block;
+    margin-bottom: var(--space-sm);
+}
+
+input, select, textarea {
+    width: 100%;
+    font: inherit;
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+/* BUTTONS */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: var(--color-surface);
+}
+button {
+    font: inherit;
+    padding: var(--space-sm) var(--space-lg);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-strong);
+}
+
+#theme-toggle {
+       background-color: var(--color-surface);
+       color: var(--color-text);
+   }
+/* Error Message */
+.widget-error {
+    color: var(--color-danger);
+}
+.spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* WIDGET */
+.widget {
+    padding: var(--space-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease;
+    animation: fade-in 0.4s ease-out;
+}
+.widget:hover {
+    transform: translateY(-2px);
+}
+
+#task-list {
+    list-style: none;
+}
+#task-stats {
+    color: var(--color-muted);
+    margin-bottom: var(--space-md);
+}
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+.task-item span {
+    flex: 1;
+}
+.task-item input[type="checkbox"] {
+    width: auto;
+    margin-bottom: 0;
+}
+.task-item button {
+    padding: 0.25rem var(--space-md);
+}
+.task-item.completed span {
+    text-decoration: line-through;
+    color: var(--color-muted);
+}
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .spinner { animation: none; }
+    .widget { transition: none; animation: none; }
+    .widget:hover { transform: none; }
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-accent);
+    color: var(--color-surface);
+    padding: 8px 16px;
+}
+.skip-link:focus { top: 0; }
+
+a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.quote-text {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    margin-bottom: var(--space-sm);
+}
+.quote-author {
+    color: var(--color-muted);
+    margin-bottom: var(--space-md);
+}
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .dashboard { grid-template-columns: 1fr; }
+}
+
